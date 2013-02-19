@@ -1,0 +1,31 @@
+﻿<header>
+    <div class="content-wrapper">
+        <div class="float-left">
+            <p class="site-title">Todo List com Knockout JS</p>
+        </div>
+    </div>
+</header>
+<div id="body">
+    <section class="content-wrapper main-content clear-fix">
+        <h3>Todos:</h3>
+        <form data-bind="submit: adicionarTarefa">
+            <input type="text" placeholder="Nova tarefa" data-bind="value: novaTarefa" class="input-text" />
+        </form>
+        <ul class="todo-list" data-bind="foreach: tarefas">
+            <li data-bind="css: { done: terminada() }">
+                <input type="checkbox" data-bind="checked: terminada" /> <span data-bind="text: titulo"></span>
+            </li>
+        </ul>
+    </section>
+</div>
+@section scripts
+{
+    <script src="~/Scripts/knockout-2.1.0.js"></script>
+    <script src="~/Scripts/todo.js"></script>
+    <script src="~/Scripts/json2.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            ko.applyBindings(todo.viewmodel);
+        });
+    </script>
+}
